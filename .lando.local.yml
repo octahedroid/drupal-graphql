@@ -14,8 +14,6 @@ tooling:
       ## Update Composer to support patching
       - composer config allow-plugins.cweagans/composer-patches true
       - composer config --json extra.composer-exit-on-patch-failure true
-      - |
-        composer config --json extra.patches.drupal/paragraphs '{ "Add UUID to table row": "patches/paragraphs-add-uuid-to-table-row.patch" }'
       - composer require cweagans/composer-patches
       ## Extend Drupal using Recipes
       - composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
