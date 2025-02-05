@@ -16,12 +16,12 @@
     ],
     "require": {
         "composer/installers": "^2.0",
-        "drupal/core-composer-scaffold": "^10.3",
-        "drupal/core-project-message": "^10.3",
-        "drupal/core-recommended": "^10.3"
+        "drupal/core-composer-scaffold": "^10.4",
+        "drupal/core-project-message": "^10.4",
+        "drupal/core-recommended": "^10.4"
     },
     "require-dev": {
-        "drupal/core-dev": "^10.3"
+        "drupal/core-dev": "^10.4"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -31,11 +31,11 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },

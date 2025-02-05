@@ -25,7 +25,7 @@ ddev composer require cweagans/composer-patches
 
 ## Extend Drupal using Recipes
 ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
-ddev exec -d /var/www/html/web php core/scripts/drupal recipe ../recipes/drupal-decoupled-graphql-advanced-recipe
+ddev drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
 
 ## Update Composer to support unpacking
 ddev composer config allow-plugins.ewcomposer/unpack true
