@@ -164,8 +164,6 @@ services:
       - storage
     expose: 8080
     default: true
-    volumes:
-      - share:/share
     commands:
       init:
         - mkdir -p /etc/service/frontend
@@ -221,9 +219,6 @@ services:
           echo "#!/bin/sh" > /etc/service/frontend/run
           echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
-        # Warm the cache
-        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:8080
-          || /bin/true'
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
         # Set the frontend framework, replace this line with the framework you are using.
@@ -253,9 +248,6 @@ services:
           echo "#!/bin/sh" > /etc/service/frontend/run
           echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
-        # Warm the cache
-        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:8080
-          || /bin/true'
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
   storybook:
@@ -289,9 +281,6 @@ services:
           echo "#!/bin/sh" > /etc/service/storybook/run
           echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
-        # Warm the cache
-        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:6006
-          || /bin/true'
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
       clone:
         - echo "storybook" > /etc/service/storybook/framework
@@ -301,7 +290,4 @@ services:
           echo "#!/bin/sh" > /etc/service/storybook/run
           echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
-        # Warm the cache
-        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:6006
-          || /bin/true'
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
